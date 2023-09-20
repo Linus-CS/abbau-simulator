@@ -88,61 +88,84 @@
       position: relative;
       float: right;
     }
+
+    .container-rechts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60vw;
+    }
+
+    #tor {
+      width: 40rem;
+    }
+
+    .hauptanzeige {
+      display: flex;
+    }
   </style>
+  <script src="kampf.js" defer></script>
   <script src="inventar.js" defer></script>
   <script src="rezepte.js" defer></script>
   <script src="main.js" defer></script>
 </head>
 
 <body>
-  <div id="inventar">
-    <img id="close" src="kreuz.png" width="50px">
-    <div id="gegenstandBereich"></div>
-  </div>
-  <img id="baum" src="baum.png" width="200px" />
-  <img id="stein" src="felsen.png" width="200px" style="opacity: 0.2" />
-  <img id="gold" src="gold.png" width="200px" style="opacity: 0.2" />
-  <div class="ressourcen">
-    <div>
-      <h2 id="holzText">Holz: 0</h2>
-      <h2 id="steinText">Stein: 0</h2>
-      <h2 id="goldText">Gold: 0</h2>
+  <div class="hauptanzeige">
+    <div class="container-links">
+      <div id="inventar">
+        <img id="close" src="kreuz.png" width="50px">
+        <div id="gegenstandBereich"></div>
+      </div>
+      <img id="baum" src="baum.png" width="200px" />
+      <img id="stein" src="felsen.png" width="200px" style="opacity: 0.2" />
+      <img id="gold" src="gold.png" width="200px" style="opacity: 0.2" />
+      <div class="ressourcen">
+        <div>
+          <h2 id="holzText">Holz: 0</h2>
+          <h2 id="steinText">Stein: 0</h2>
+          <h2 id="goldText">Gold: 0</h2>
+        </div>
+        <img id="rucksack" src="rucksack.png" width="100px" height="130px">
+      </div>
+      <div class="craftingTable">
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+        <div class="slot">
+          <img />
+        </div>
+      </div>
+      <div class="bauen">
+        <button id="bauBtn">Bauen</button>
+        <div class="bauSlot">
+          <img id="item" />
+        </div>
+      </div>
     </div>
-    <img id="rucksack" src="rucksack.png" width="100px" height="130px">
-  </div>
-  <div class="craftingTable">
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-    <div class="slot">
-      <img />
-    </div>
-  </div>
-  <div class="bauen">
-    <button id="bauBtn">Bauen</button>
-    <div class="bauSlot">
-      <img id="item" />
+    <div class="container-rechts">
+      <img src="tor.png" id="tor" style="opacity: 0.2">
     </div>
   </div>
 </body>

@@ -1,0 +1,1 @@
+let tor_element = document.getElementById("tor");
