@@ -1,3 +1,4 @@
+let hauptanzeige = document.getElementById("hauptanzeige")
 let baum_bild = document.getElementById("baum");
 let stein_bild = document.getElementById("stein");
 let gold_bild = document.getElementById("gold");

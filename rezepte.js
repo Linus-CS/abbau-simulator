@@ -1,3 +1,48 @@
+let rezepte_element = document.getElementById("rezepte");
+let buch_element = document.getElementById("buch");
+let close_rezepte_element = document.getElementById("closeRezepte");
+let rezeptebereich_element = document.getElementById("rezepteBereich")
+
+function zeigeRezepte() {
+    rezepte_element.style.display = "block";
+    for (const [name, item] of Object.entries(items)) {
+
+        let div1 = document.createElement("div");
+        div1.classList.add("rezept");
+        div1.style.marginBottom = "4rem";
+
+        let div2 = document.createElement("div");
+        div2.classList.add("craftingTable");
+        div2.classList.add("rezeptTable");
+
+        div1.appendChild(div2);
+
+        for (const ressource of item[0]) {
+            let img = document.createElement("img");
+            if (ressource != "") {
+                img.src = ressource + ".png";
+            }
+            img.style.width = "100px";
+            div2.appendChild(img);
+        }
+
+        let img = document.createElement("img");
+        img.src = item[1];
+        img.style.width = "100px";
+        img.style.marginLeft = "10rem";
+        div1.appendChild(img);
+
+        rezeptebereich_element.appendChild(div1);
+    }
+}
+
+function schliesseRezepte() {
+    rezepte_element.style.display = "none";
+}
+
+buch_element.onclick = zeigeRezepte;
+close_rezepte_element.onclick = schliesseRezepte;
+
 let items = {};
 let inventar = [];
 
@@ -11,7 +56,7 @@ function ereignis_stein_spitzhacke() {
     gold_bild.style.opacity = "";
 }
 
-let rezept_gold_axt = ["gold", "holz", "", "gold", "holz", "", "", "holz", ""];
+let rezept_gold_axt = ["gold", "holz", "gold", "gold", "holz", "", "", "holz", ""];
 function ereignis_gold_axt() {
     holz_faktor = 20;
 }
