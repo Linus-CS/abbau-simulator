@@ -1,8 +1,18 @@
 let hauptanzeige = document.getElementById("hauptanzeige")
+
+// Wir wählen das baum bild aus, um später zu programmieren, dass wir holz dazubekommen sobald wir auf das Bild klicken.
 let baum_bild = document.getElementById("baum");
+
+// Damit wir Stein bekommen, sobald auf das Steinbild geklickt wird, müssen wir zuerst das stein Bild auswählen.
 let stein_bild = document.getElementById("stein");
+
+// Also sobald wir eine Steinspitzhacke haben, können wir gold sammeln, dafür brauchen wir das gold Bild um zu programmiern: Wenn das Gold Bild
+// angeklickt wird, bekommen wir gold dazu.
 let gold_bild = document.getElementById("gold");
+
+// Der Text wo hingeschrieben wird wie viel Holz wir haben, wird hier ersteinmal ausgewählt, damit wir da reinschreiben können wie viel Holz wir haben.
 let holz_text = document.getElementById("holzText");
+
 let stein_text = document.getElementById("steinText");
 let gold_text = document.getElementById("goldText");
 let item_bild = document.getElementById("item");
@@ -19,6 +29,40 @@ let hat_holzSpitzhacke = false;
 let hat_steinSpitzhacke = false;
 
 let ausgewählterRohstoff = "";
+
+
+// Hier wird die holzSammeln funktion dem baum Bild hinzugefügt, sodass diese jedes mal aufgerufen wird sobald man das Baum Bild anklickt.
+baum_bild.onclick = holzSammeln;
+
+stein_bild.onclick = steinSammeln;
+
+gold_bild.onclick = goldSammeln;
+
+// Eine Variable die definiert wie viel holz wir pro klick dazubekommen sollen.
+let holz_faktor = 10;
+
+// Eine Funktion die aufgerufen werden kann um holz hinzuzufügen
+function holzSammeln() {
+  // Fügt soviel holz zu der Variable holz hinzu wie in der Variable holz_faktor steht.
+  holz += holz_faktor;
+
+  // Zeigt auf der Seite an, wie viel Holz in der Variable holz steckt.
+  holz_text.textContent = "Holz: " + holz;
+}
+
+function steinSammeln() {
+  if (inventar.includes("holzSpitzhacke")) {
+    stein += 5;
+  }
+  stein_text.textContent = "Stein: " + stein;
+}
+
+function goldSammeln() {
+  if (inventar.includes("steinSpitzhacke")) {
+    gold += 5;
+  }
+  gold_text.textContent = "Gold: " + gold;
+}
 
 function holzAuswählen() {
   ausgewählterRohstoff = "holz";
@@ -131,25 +175,6 @@ for (let i = 0; i < 9; i++) {
   slots[i].ondblclick = () => raustuen(i);
 }
 
-let holz_faktor = 10;
-function holzSammeln() {
-  holz += holz_faktor;
-  holz_text.textContent = "Holz: " + holz;
-}
-
-function steinSammeln() {
-  if (inventar.includes("holzSpitzhacke")) {
-    stein += 5;
-  }
-  stein_text.textContent = "Stein: " + stein;
-}
-
-function goldSammeln() {
-  if (inventar.includes("steinSpitzhacke")) {
-    gold += 5;
-  }
-  gold_text.textContent = "Gold: " + gold;
-}
 
 function craftingTableLeeren() {
   for (let i = 0; i < 9; i++) {
@@ -184,7 +209,4 @@ function bauen() {
   }
 }
 
-baum_bild.onclick = holzSammeln;
-stein_bild.onclick = steinSammeln;
-gold_bild.onclick = goldSammeln;
 bauen_knopf.onclick = bauen;

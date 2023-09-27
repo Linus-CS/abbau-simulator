@@ -1,0 +1,126 @@
+body {
+  background-color: black;
+  margin-left: 100px;
+  user-select: none;
+}
+
+h1,
+h2 {
+  color: white;
+}
+
+.craftingTable {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 200px;
+}
+
+.slot {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: gray;
+}
+
+.slot img {
+  display: none;
+  margin-top: 10px;
+  width: 100px;
+  height: 70px;
+}
+
+#bauBtn {
+  width: 100px;
+  height: 40px;
+  margin-top: 90px;
+  margin-left: 10px;
+}
+
+.bauSlot {
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  margin-top: 58px;
+  margin-left: 30px;
+  width: 100px;
+  height: 100px;
+}
+
+.bauSlot img {
+  width: 100px;
+  height: 100px;
+}
+
+.bauen {
+  display: flex;
+}
+
+.ressourcen {
+  display: flex;
+  align-items: center;
+}
+
+#rucksack {
+  margin-left: 100px;
+}
+
+.container-anzeige {
+  display: none;
+  position: absolute;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  width: 80vw;
+  height: 80vh;
+  background-color: white;
+  border: 5px solid black;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+.close {
+  position: relative;
+  float: right;
+}
+
+.container-rechts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+}
+
+#tor {
+  width: 40rem;
+}
+
+#hauptanzeige {
+  display: flex;
+}
+
+#kampfarena {
+  display: none;
+  height: 100vh;
+  align-items: center;
+}
+
+.container-rezepte {
+  display: flex;
+}
+
+.container-buch {
+  display: flex;
+  align-items: center;
+  margin-left: 10rem;
+}
+
+.rezept {
+  display: flex;
+  align-items: center;
+}
+
+.rezeptTable {
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+}

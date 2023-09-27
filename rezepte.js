@@ -5,8 +5,8 @@ let rezeptebereich_element = document.getElementById("rezepteBereich")
 
 function zeigeRezepte() {
     rezepte_element.style.display = "block";
+    rezeptebereich_element.innerHTML = "";
     for (const [name, item] of Object.entries(items)) {
-
         let div1 = document.createElement("div");
         div1.classList.add("rezept");
         div1.style.marginBottom = "4rem";
@@ -23,6 +23,7 @@ function zeigeRezepte() {
                 img.src = ressource + ".png";
             }
             img.style.width = "100px";
+            img.style.height = "50px";
             div2.appendChild(img);
         }
 
