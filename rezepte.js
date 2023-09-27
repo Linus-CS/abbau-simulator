@@ -67,7 +67,13 @@ function ereignis_einfaches_schwert() {
     tor_element.style.opacity = "";
 }
 
+let rezept_gold_spitzhacke = ["gold", "gold", "gold", "", "holz", "", "", "holz", ""]
+function ereignis_gold_spitzhacke() {
+    stein_faktor = 10;
+}
+
 items["holzSpitzhacke"] = [rezept_holz_spitzhacke, "holzspitzhacke.png", ereignis_holz_spitzhacke];
 items["steinSpitzhacke"] = [rezept_stein_spitzhacke, "steinspitzhacke.png", ereignis_stein_spitzhacke];
 items["goldAxt"] = [rezept_gold_axt, "goldAxt.png", ereignis_gold_axt];
 items["einfachesSchwert"] = [rezept_einfaches_schwert, "einfachesSchwert.png", ereignis_einfaches_schwert];
+items["goldSpitzhacke"] = [rezept_gold_spitzhacke, "goldspitzhacke.png", ereignis_gold_spitzhacke];

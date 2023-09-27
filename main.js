@@ -1,16 +1,16 @@
 let hauptanzeige = document.getElementById("hauptanzeige")
 
-// Wir wählen das baum bild aus, um später zu programmieren, dass wir holz dazubekommen sobald wir auf das Bild klicken.
+/* Wir wählen das baum bild aus, um später zu programmieren, dass wir holz dazubekommen sobald wir auf das Bild klicken. */
 let baum_bild = document.getElementById("baum");
 
-// Damit wir Stein bekommen, sobald auf das Steinbild geklickt wird, müssen wir zuerst das stein Bild auswählen.
+/* Damit wir Stein bekommen, sobald auf das Steinbild geklickt wird, müssen wir zuerst das stein Bild auswählen. */
 let stein_bild = document.getElementById("stein");
 
-// Also sobald wir eine Steinspitzhacke haben, können wir gold sammeln, dafür brauchen wir das gold Bild um zu programmiern: Wenn das Gold Bild
-// angeklickt wird, bekommen wir gold dazu.
+/* Also sobald wir eine Steinspitzhacke haben, können wir gold sammeln, dafür brauchen wir das gold Bild um zu programmiern: Wenn das Gold Bild
+angeklickt wird, bekommen wir gold dazu. */
 let gold_bild = document.getElementById("gold");
 
-// Der Text wo hingeschrieben wird wie viel Holz wir haben, wird hier ersteinmal ausgewählt, damit wir da reinschreiben können wie viel Holz wir haben.
+/* Der Text wo hingeschrieben wird wie viel Holz wir haben, wird hier ersteinmal ausgewählt, damit wir da reinschreiben können wie viel Holz wir haben. */
 let holz_text = document.getElementById("holzText");
 
 let stein_text = document.getElementById("steinText");
@@ -22,9 +22,15 @@ let slots = document.getElementsByClassName("slot");
 let rezept_textfeld = document.getElementById("rezept");
 let bauen_knopf = document.getElementById("bauBtn");
 
+/* Das ist die Variable in der wir abspeichern wie viel holz wir haben */
 let holz = 0;
+
+/* Hier wird eine neue Variale angelegt die stein heißt und in der wir abspeichern wie viel Stein wir haben */
 let stein = 0;
+
+/* Die Varibale in der Zeile wird genutzt um abzuspeichern wie viel gold wir haben. */
 let gold = 0;
+
 let hat_holzSpitzhacke = false;
 let hat_steinSpitzhacke = false;
 
@@ -34,14 +40,15 @@ let ausgewählterRohstoff = "";
 // Hier wird die holzSammeln funktion dem baum Bild hinzugefügt, sodass diese jedes mal aufgerufen wird sobald man das Baum Bild anklickt.
 baum_bild.onclick = holzSammeln;
 
+// Wir geben mit dieser Zeile Code an, dass die Funktio steinSammeln aufgerufen wird, sobald wir auf das sein Bild klicken.
 stein_bild.onclick = steinSammeln;
 
 gold_bild.onclick = goldSammeln;
 
-// Eine Variable die definiert wie viel holz wir pro klick dazubekommen sollen.
+/* Eine Variable die definiert wie viel holz wir pro klick dazubekommen sollen. */
 let holz_faktor = 10;
 
-// Eine Funktion die aufgerufen werden kann um holz hinzuzufügen
+/** Eine Funktion die aufgerufen werden kann um holz hinzuzufügen */
 function holzSammeln() {
   // Fügt soviel holz zu der Variable holz hinzu wie in der Variable holz_faktor steht.
   holz += holz_faktor;
@@ -50,17 +57,31 @@ function holzSammeln() {
   holz_text.textContent = "Holz: " + holz;
 }
 
+/* Diese Zeile erstellt uns eine neue Variable, welche kontrolliert wie viel stein wir mit einem Klick auf das Stein Bild bekommen */
+let stein_faktor = 5;
+
+/** Diese Funktion fügt und 5 stein hinzu, aber nur wenn wir eine Holz Spitzhacke haben. Außerdem zeigt die Funktion an wie viel Stein wir haben. */
 function steinSammeln() {
+  // Diese Zeile code sorgt dafür, dass die Zeile darunter nur dann ausgeführt wird, sobald wir eine holzSpitzhacke im Inventar haben.
   if (inventar.includes("holzSpitzhacke")) {
-    stein += 5;
+    // Fügt uns 5 stein hinzu
+    stein += stein_faktor;
   }
+  // Schreibt in das h2 wie viel wie viel Stein wir haben.
   stein_text.textContent = "Stein: " + stein;
 }
 
+/* In dieser Zeile wird eine Variable angelegt mit in der gespeichert wird wie viel gold wir mit einem klick bekommen. */
+let gold_faktor = 3;
+
+/** Allgemein macht diese Funktion das wir Gold bekommen, wenn wir eine Stein Spitzhacke haben. */
 function goldSammeln() {
+  // Die Zeile mit dem if am Anfang sorgt dafür, dass wir die Zeile darunter (gold += 3) nur dann ausführen, wenn wir eine Stein Sptizhacke haben.
   if (inventar.includes("steinSpitzhacke")) {
-    gold += 5;
+    // Diese Zeil code fügt uns 3 gold hinzu.
+    gold += gold_faktor;
   }
+  // Diese Zeile code fügt den Text auf der linken Seite hinzu der uns anzeigt wie viel Gold wir haben.
   gold_text.textContent = "Gold: " + gold;
 }
 
