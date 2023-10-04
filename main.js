@@ -13,10 +13,14 @@ let gold_bild = document.getElementById("gold");
 /* Der Text wo hingeschrieben wird wie viel Holz wir haben, wird hier ersteinmal ausgewählt, damit wir da reinschreiben können wie viel Holz wir haben. */
 let holz_text = document.getElementById("holzText");
 
+/* Das ist eine Variable welche den text auswählt wo reingeschrieben wird wie viel Stein wir haben. */
 let stein_text = document.getElementById("steinText");
-let gold_text = document.getElementById("goldText");
-let item_bild = document.getElementById("item");
 
+/* Das ist eine Variable welche den text auswählt wo reingeschrieben wird wie viel Stein wir haben. */
+let gold_text = document.getElementById("goldText");
+
+
+let item_bild = document.getElementById("item");
 let slots = document.getElementsByClassName("slot");
 
 let rezept_textfeld = document.getElementById("rezept");
@@ -33,9 +37,6 @@ let gold = 0;
 
 let hat_holzSpitzhacke = false;
 let hat_steinSpitzhacke = false;
-
-let ausgewählterRohstoff = "";
-
 
 // Hier wird die holzSammeln funktion dem baum Bild hinzugefügt, sodass diese jedes mal aufgerufen wird sobald man das Baum Bild anklickt.
 baum_bild.onclick = holzSammeln;
@@ -85,32 +86,84 @@ function goldSammeln() {
   gold_text.textContent = "Gold: " + gold;
 }
 
+let ausgewählterRohstoff = "";
+
 function holzAuswählen() {
+  // Diese Zeile schreibt holz in die Variable ausgewählterRohstoff, damit wir später im crafting table holz reintuen sobald holz ausgewählt ist.
   ausgewählterRohstoff = "holz";
+
+  // Diese Zeile macht den Text (Holz: 0) grün.
   holz_text.style.color = "green";
+
+  // In dieser Zeile wird der Text welcher anzeigt wie viel stein wir haben weiß gemacht. 
+  // Das machen wir falls vorher Stein ausgewählt wurde damit nun der Stein text nicht mehr grün sonder weiß wird
   stein_text.style.color = "white";
+
+  // Hier wird der text der anzeigt wie viel Gold wir haben weiß gemacht, falls wir vorher Gold ausgewählt hatten und deshalb der Text grün wahr.
   gold_text.style.color = "white";
 }
 
+
 function steinAuswählen() {
+  // Diese Zeile schreibt den Text stein in die Variable ausgewählterRohstoff, damit wir später im crafting table stein reintuen sobald eben auch Stein ausgewählt ist.
   ausgewählterRohstoff = "stein";
+
+
+  // In dieser Zeile wird der Text welcher anzeigt wie viel holz wir haben weiß gemacht. 
+  // Das machen wir falls vorher Holz ausgewählt wurde damit nun der Holz text nicht mehr grün sonder weiß wird
   holz_text.style.color = "white";
+
+  // Diese Zeile macht den Text (Stein: 0) grün.
   stein_text.style.color = "green";
+
+  // Hier wird der text der anzeigt wie viel Gold wir haben weiß gemacht, falls wir vorher Gold ausgewählt hatten und deshalb der Text grün wahr.
   gold_text.style.color = "white";
 }
 
 function goldAuswählen() {
   ausgewählterRohstoff = "gold";
+
+
+  // Hier wird der text der anzeigt wie viel Holz wir haben weiß gemacht, falls wir vorher Holz ausgewählt hatten und deshalb der Text grün wahr.
   holz_text.style.color = "white";
+
+  // In dieser Zeile wird der Text welcher anzeigt wie viel stein wir haben weiß gemacht. 
+  // Das machen wir falls vorher Stein ausgewählt wurde damit nun der Stein text nicht mehr grün sonder weiß wird
   stein_text.style.color = "white";
+
+  // Diese Zeile macht den Text (Gold: 0) grün.
   gold_text.style.color = "green";
 }
 
+// Diese Zeile sorgt dafür das der code in der Funktion holzAuswählen aufgerufen wird sobald auf den Text, der anzeigt wie viel Holz wir haben (Holz: 0), geklickt wird.
 holz_text.onclick = holzAuswählen;
+
+// Hier mit dieser Zeile sorgen wir dafür, dass alle Zeilen in der Funktion steinAuswählen aufgerufen werden, wenn auf den Text "Stein: 0" geklickt wird.
 stein_text.onclick = steinAuswählen;
+
+// Hier mit dieser Zeile sorgen wir dafür, dass alle Zeilen in der Funktion goldAuswählen aufgerufen werden, wenn auf den Text "Gold: 0" geklickt wird.
 gold_text.onclick = goldAuswählen;
 
 let craftingTable = ["", "", "", "", "", "", "", "", ""];
+
+for (let i = 0; i < 9; i++) {
+  slots[i].onclick = () => reintuen(i);
+  slots[i].ondblclick = () => raustuen(i);
+}
+
+function reintuen(i) {
+  if (craftingTable[i] != "") return;
+  holzReintuen(i);
+  steinReintuen(i);
+  goldReintuen(i);
+}
+
+function raustuen(i) {
+  holzRaustuen(i);
+  steinRaustuen(i);
+  goldRaustuen(i);
+}
+
 
 function holzReintuen(i) {
   if (ausgewählterRohstoff == "holz" && holz >= 100) {
@@ -143,13 +196,6 @@ function goldReintuen(i) {
     slots[i].children[0].style.display = "block";
     craftingTable[i] = "gold";
   }
-}
-
-function reintuen(i) {
-  if (craftingTable[i] != "") return;
-  holzReintuen(i);
-  steinReintuen(i);
-  goldReintuen(i);
 }
 
 function holzRaustuen(i) {
@@ -185,16 +231,6 @@ function goldRaustuen(i) {
   }
 }
 
-function raustuen(i) {
-  holzRaustuen(i);
-  steinRaustuen(i);
-  goldRaustuen(i);
-}
-
-for (let i = 0; i < 9; i++) {
-  slots[i].onclick = () => reintuen(i);
-  slots[i].ondblclick = () => raustuen(i);
-}
 
 
 function craftingTableLeeren() {

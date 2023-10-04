@@ -3,6 +3,9 @@ let buch_element = document.getElementById("buch");
 let close_rezepte_element = document.getElementById("closeRezepte");
 let rezeptebereich_element = document.getElementById("rezepteBereich")
 
+let inventar = [];
+let items = {};
+
 function zeigeRezepte() {
     rezepte_element.style.display = "block";
     rezeptebereich_element.innerHTML = "";
@@ -43,9 +46,6 @@ function schliesseRezepte() {
 
 buch_element.onclick = zeigeRezepte;
 close_rezepte_element.onclick = schliesseRezepte;
-
-let items = {};
-let inventar = [];
 
 let rezept_holz_spitzhacke = ["holz", "holz", "holz", "", "holz", "", "", "holz", ""];
 function ereignis_holz_spitzhacke() {
