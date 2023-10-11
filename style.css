@@ -164,6 +164,11 @@ h2 {
 }
 
 .monster {
-  position: relative;
+  position: absolute;
   left: 0;
+}
+
+#haus {
+  position: absolute;
+  right: 0;
 }

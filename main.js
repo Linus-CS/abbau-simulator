@@ -146,16 +146,21 @@ gold_text.onclick = goldAuswählen;
 
 let craftingTable = ["", "", "", "", "", "", "", "", ""];
 
+// Das ist eine Schleife die 9 mal wiederholt wird
 for (let i = 0; i < 9; i++) {
-  slots[i].onclick = () => reintuen(i);
-  slots[i].ondblclick = () => raustuen(i);
+  // Das i beginnt bei 0 und mit jedem Schleifendurchlauf wird i um eins erhöht also 0, 1, 2, 3,..., 8 
+
+  // Diese beiden Zeilen werden 9 mal ausgeführt
+  slots[i].onclick = () => reintuen(i);     // Sorgt dafür das wenn man auf einen Slot im crafting table klickt, das man dann den Code in der Funktion reintuen aufruft
+  slots[i].ondblclick = () => raustuen(i);  // Sorgt dafür das wenn man auf einen Slot im crafting table doppelklickt, das man dann den Code in der Funktion raustuen aufruft
 }
 
 function reintuen(i) {
-  if (craftingTable[i] != "") return;
-  holzReintuen(i);
-  steinReintuen(i);
-  goldReintuen(i);
+  if (craftingTable[i] == "") {
+    holzReintuen(i);
+    steinReintuen(i);
+    goldReintuen(i);
+  }
 }
 
 function raustuen(i) {
@@ -241,7 +246,7 @@ function craftingTableLeeren() {
   }
 }
 
-function teste_rezept(name, rezept, bild, erfolgsFunktion) {
+function testeRezept(name, rezept, bild, erfolgsFunktion) {
   if (
     craftingTable[0] == rezept[0] &&
     craftingTable[1] == rezept[1] &&
@@ -261,8 +266,8 @@ function teste_rezept(name, rezept, bild, erfolgsFunktion) {
 }
 
 function bauen() {
-  for (const [name, item] of Object.entries(items)) {
-    teste_rezept(name, item[0], item[1], item[2]);
+  for (const [name, item] of Object.entries(rezepte)) {
+    testeRezept(name, item[0], item[1], item[2]);
   }
 }
 

@@ -20,19 +20,41 @@ function zombieHinzufügen() {
     img.style.width = "100px";
     img.src = "zombie1.png";
     img.classList.add("monster");
-    let fortschritt = 0;
+    zombie_container.appendChild(img);
 
-    function laufen() {
-        fortschritt += 1;
-        img.style.left = fortschritt + "px";
+    let zombie = {
+        leben: 5,
+        fortschritt: 0,
+        staerke: 0,
+        geschwindigkeit: 1,
+        bild: img,
+    };
+
+
+    function lebenAbziehen() {
+        zombie.leben -= 1;
+        if (zombie.leben == 0) {
+            zombie_container.removeChild(img);
+            monster_liste.splice(monster_liste.indexOf(zombie), 1);
+        }
     }
 
-    // setInterval(laufen, 40);
+    img.onclick = lebenAbziehen;
 
-    zombie_container.appendChild(img);
+    monster_liste.push(zombie);
 }
 
-zombieHinzufügen();
+let monster_liste = [];
+
+function laufen() {
+    for (let i = 0; i < monster_liste.length; i++) {
+        monster_liste[i].fortschritt += monster_liste[i].geschwindigkeit;
+        monster_liste[i].bild.style.left = monster_liste[i].fortschritt + "px";
+    }
+}
+
+setInterval(laufen, 40);
+setInterval(zombieHinzufügen, 4000);
 
 tor_element.onclick = geheZuKampfarena;
 pfeil_element.onclick = geheZuHauptanzeige;
